@@ -1,9 +1,13 @@
 name: Release & Publish to PyPI
 
 on:
+  release:
+    types: [published]
   push:
     tags:
-      - "v*.*.*"
+      - "v*"
+      - "[0-9]+.[0-9]+.[0-9]+"
+  workflow_dispatch:
 
 permissions:
   contents: read

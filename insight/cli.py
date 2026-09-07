@@ -6,14 +6,20 @@ from .analyzer import analyze_codebase
 from .reporter import generate_report
 
 def get_version():
+    try:
+        from . import __version__
+        return __version__
+    except Exception:
+        pass
     here = pathlib.Path(__file__).parent.parent
     setup_py = here / "setup.py"
-    with open(setup_py, "r") as f:
-        content = f.read()
-        match = re.search(r"version=\"(.*?)\"", content)
-        if match:
-            return match.group(1)
-    return "0.0.0"
+    if setup_py.exists():
+        with open(setup_py, "r") as f:
+            content = f.read()
+            match = re.search(r"version=\"(.*?)\"", content)
+            if match:
+                return match.group(1)
+    return "0.2.6"
 
 def main():
     parser = argparse.ArgumentParser(description="Insight - Codebase Explainer CLI")
