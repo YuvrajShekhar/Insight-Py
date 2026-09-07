@@ -24,7 +24,7 @@ def main():
     args = parser.parse_args()
 
     if not os.path.exists(args.path):
-        print(f"❌ Error: Path '{args.path}' not found.")
+        print(f"Error: Path '{args.path}' not found.")
         print(f"   • Current directory: {os.getcwd()}")
         return
     
@@ -35,3 +35,6 @@ def main():
     generate_report(analysis, args.output)
 
     print(f"Reports saved in {args.output}/")
+
+if __name__ == "__main__":
+    main()

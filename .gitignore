@@ -85,3 +85,11 @@ dmypy.json
 
 # pytype static type analyzer
 .pytype/
+
+# Insight reports
+report/
+reports/
+*.md.tmp
+
+# Ruff
+.ruff_cache/

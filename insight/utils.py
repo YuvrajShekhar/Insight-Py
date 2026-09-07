@@ -27,7 +27,7 @@ def get_ignored_dirs(path):
                         # Remove trailing slashes for consistent matching
                         ignored.add(line.strip('/'))
         except IOError:
-            print(f"⚠️  Could not read .insightignore file at {ignore_file}")
+            print(f"Warning: Could not read .insightignore file at {ignore_file}")
             
     return ignored
 

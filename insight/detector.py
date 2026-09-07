@@ -9,7 +9,7 @@ console = Console()
 def show_error(message):
     console.print(
         Panel.fit(
-            f"[bold red]❌ ERROR[/bold red]\n\n{message}",
+            f"[bold red]ERROR[/bold red]\n\n{message}",
             border_style="red",
             title="System Message",
             title_align="left"
@@ -24,16 +24,16 @@ is_testing = (
 
 api_key = os.environ.get("GOOGLE_API_KEY")
 if not api_key and not is_testing:
-    error_message = '''❌ Error: Missing Google API Key / Application Issue
+    error_message = '''Error: Missing Google API Key / Application Issue
 It looks like the application encountered an issue, possibly due to a missing Google API key.
-🔑 To fix a missing API key, set your key using one of the following methods:
+To fix a missing API key, set your key using one of the following methods:
    • On macOS/Linux:
        export GOOGLE_API_KEY='your_key_here'
    • On Windows (PowerShell or CMD):
        setx GOOGLE_API_KEY 'your_key_here'
-📖 Useful Links:
+Useful Links:
    • Create/manage API keys: https://aistudio.google.com/app/api-keys
-   • Full setup & troubleshooting guide: https://github.com/XplnHUB/Insight-Py/blob/main/INSTRUCTION.md
+   • Full setup & troubleshooting guide: https://github.com/ferrix-lab/Insight-Py/blob/main/INSTRUCTION.md
 '''
 
     show_error(error_message)

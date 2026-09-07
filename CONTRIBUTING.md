@@ -1,67 +1,170 @@
 # Contributing to Insight
 
-First off, thank you for considering contributing to Insight\! It's people like you that make this project a great tool for developers.
+Thank you for your interest in contributing to **Insight**! Open-source tools thrive because of contributors like you. Whether you're reporting a bug, improving the documentation, optimizing performance, or proposing major architectural features, we welcome your involvement.
 
-We welcome any and all contributions, from bug reports to new features. To ensure a smooth and collaborative process, please read through the following guidelines.
+Please take a few moments to review these guidelines before getting started.
+
+---
 
 ## Code of Conduct
 
-This project and everyone participating in it is governed by our [Code of Conduct](https://www.google.com/search?q=CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to the project maintainers.
+This project and everyone participating in it is governed by our [Code of Conduct](CODE_OF_CONDUCT.md). By contributing, you pledge to maintain an inclusive, respectful, and harassment-free environment for all participants. 
+
+Please report any unacceptable behavior to [contact@ferrixlabs.in](mailto:contact@ferrixlabs.in).
+
+---
 
 ## How Can I Contribute?
 
-### Reporting Bugs
+### 1. Reporting Bugs
 
-If you find a bug, please make sure to do the following:
+Before creating a new issue, please search the [Existing Issues](https://github.com/ferrix-lab/Insight-Py/issues) to verify that the problem hasn't already been reported.
 
-1.  **Search existing issues:** Before creating a new issue, please check to see if the bug has already been reported.
-2.  **Provide a clear title and description:** The title should be concise and the description should include as much relevant information as possible, including steps to reproduce the bug.
-3.  **Include details about your environment:** Let us know what operating system you're on, what version of Python you're using, and any other relevant details.
+If you discover a new bug, please open a report using our [Bug Report Template](https://github.com/ferrix-lab/Insight-Py/issues/new?template=bug_report.yml):
+- **Provide a clear and descriptive title.**
+- **Explain steps to reproduce** the issue with example commands and code.
+- **Include environment details** (OS, Python version, Insight package version).
+- **Paste full stack traces / logs** when available.
+- **Do NOT include sensitive information** such as API keys or secret tokens.
 
-### Suggesting Enhancements
+### 2. Suggesting Enhancements
 
-If you have an idea for a new feature or an improvement to an existing one, please:
+Have an idea for a new language parser, export format, or local LLM integration? We'd love to hear it!
+- Check existing issues and discussions to see if the feature has already been proposed.
+- Open an enhancement proposal using our [Feature Request Template](https://github.com/ferrix-lab/Insight-Py/issues/new?template=feature_request.yml).
+- Explain the problem, the proposed solution, and any alternative approaches you considered.
 
-1.  **Search existing issues:** Check if the enhancement has already been suggested.
-2.  **Provide a clear title and description:** Explain the enhancement in detail and why it would be a valuable addition to the project.
+### 3. Finding "Good First Issues"
 
-### Your First Code Contribution
+If you are new to the codebase, check out issues tagged with [`good first issue`](https://github.com/ferrix-lab/Insight-Py/labels/good%20first%20issue). These issues are scoped to be beginner-friendly and great for first-time contributors.
 
-Unsure where to begin? A great place to start is by looking for issues tagged with `good first issue`. These are issues that are well-suited for new contributors.
+---
+
+## Local Development Setup
+
+### Prerequisites
+- Python 3.9, 3.10, 3.11, 3.12, or 3.13
+- Git
+- A Google Gemini API Key (optional for static features, required for AI explanations)
+
+### Step-by-Step Setup
+
+1. **Fork and Clone the Repository:**
+   ```bash
+   git clone https://github.com/<your-username>/Insight-Py.git
+   cd Insight-Py
+   ```
+
+2. **Create and Activate a Virtual Environment:**
+   ```bash
+   python3 -m venv venv
+
+   # macOS / Linux:
+   source venv/bin/activate
+
+   # Windows (PowerShell):
+   venv\Scripts\Activate.ps1
+
+   # Windows (Command Prompt):
+   venv\Scripts\activate.bat
+   ```
+
+3. **Install Dependencies in Editable Mode with Dev Extras:**
+   ```bash
+   pip install --upgrade pip
+   pip install -e ".[dev]"
+   ```
+   *Note: If your shell requires quotes around brackets, use `pip install -e ".[dev]"` or run `pip install -r requirements-dev.txt`.*
+
+4. **Set Your API Key (for testing AI features):**
+   ```bash
+   # macOS / Linux:
+   export GOOGLE_API_KEY="your_api_key_here"
+
+   # Windows (PowerShell):
+   $env:GOOGLE_API_KEY="your_api_key_here"
+   ```
+
+5. **Verify Installation:**
+   ```bash
+   insight-cli --help
+   # or
+   insight --help
+   ```
+
+---
+
+## Quality Standards & Testing
+
+To ensure stability across all platforms, every contribution must pass automated linting and tests before merging.
+
+### 1. Code Style & Linting
+We use [`ruff`](https://docs.astral.sh/ruff/) for ultra-fast linting and PEP 8 enforcement:
+
+```bash
+# Check code for linting errors:
+ruff check .
+
+# Automatically fix format and lint issues where possible:
+ruff check --fix .
+ruff format .
+```
+
+### 2. Running Tests
+We use [`pytest`](https://docs.pytest.org/) for automated testing:
+
+```bash
+# Run the test suite:
+pytest
+
+# Run tests with verbose output:
+pytest -v
+
+# Run a specific test file:
+pytest tests/test_analyzer.py
+```
+
+---
 
 ## Pull Request Process
 
-1.  **Fork the repository:** Create your own fork of the project to your GitHub account.
-2.  **Create a new branch:** Make a new branch from `main` for your changes.
-    ```bash
-    git checkout -b name-of-your-feature-or-fix
-    ```
-3.  **Make your changes:** Make your changes to the code, and be sure to follow the coding style guidelines below.
-4.  **Add tests:** If you're adding a new feature, please include tests to ensure it works as expected.
-5.  **Ensure all tests pass:** Run the test suite to make sure your changes haven't broken anything.
-6.  **Commit your changes:** Write a clear and concise commit message.
-7.  **Push to your fork:**
-    ```bash
-    git push origin name-of-your-feature-or-fix
-    ```
-8.  **Submit a pull request:** Open a pull request from your fork to the `main` branch of the original repository.
+1. **Create a Topic Branch:**
+   Branch off `main` with a descriptive name:
+   ```bash
+   git checkout -b fix/comment-counter-bug
+   # or
+   git checkout -b feat/offline-static-mode
+   ```
 
-### Pull Request Title
+2. **Make Your Changes:**
+   - Keep pull requests focused on a single responsibility.
+   - Include meaningful comments and update relevant docstrings.
+   - Update documentation (`README.md`, `INSTRUCTION.md`) if flags or behaviors change.
 
-When you submit a pull request, please ensure that the title references the issue number it addresses. This helps us to keep track of which issues are being worked on and to link the pull request to the relevant discussion.
+3. **Commit Messages (Conventional Commits):**
+   We follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
+   ```
+   feat: Add --static flag for offline code analysis (fixes #30)
+   fix: Correct C-style inline block comment counter (fixes #25)
+   docs: Update installation guide with Windows setup (fixes #27)
+   test: Add pytest suite for ast parser
+   refactor: Modularize detector prompt generation
+   ```
 
-**The title of your pull request should be in the following format:**
+4. **Push and Submit:**
+   ```bash
+   git push origin <your-branch-name>
+   ```
+   Open a pull request against the `main` branch of `ferrix-lab/Insight-Py`. Fill out the [PR Template](.github/pull_request_template.md) completely, referencing any resolved issues (`fixes #123`).
 
-```
-feat: A brief description of the feature (fixes #123)
-fix: A brief description of the fix (fixes #456)
-docs: A brief description of the documentation change (fixes #789)
-```
+5. **Continuous Integration (CI):**
+   All PRs automatically trigger our GitHub Actions CI pipeline, running linting and tests across supported Python versions. Ensure all CI checks pass.
 
-## Coding Style
+---
 
-  * This project follows the [PEP 8](https://www.python.org/dev/peps/pep-0008/) style guide for Python code.
-  * Please include docstrings for all new functions and classes.
-  * Use comments to explain any complex or non-obvious parts of your code.
+## Community & Questions
 
-Thank you again for your contribution.
+- **Discussions:** Use [GitHub Discussions](https://github.com/ferrix-lab/Insight-Py/discussions) to ask questions, showcase projects, and pitch ideas.
+- **Security:** Please review our security policies and report vulnerabilities responsibly via [GitHub Security Advisories](https://github.com/ferrix-lab/Insight-Py/security).
+
+Thank you for helping make Insight better for developers worldwide.
