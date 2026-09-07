@@ -1,0 +1,65 @@
+name: Bug Report
+description: Report a bug or unintended behavior in Insight CLI
+title: "fix: [Short summary of the bug]"
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting an issue! Please provide as much detail as possible to help us diagnose and fix the problem.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is.
+      placeholder: When running insight on my project, it crashes with...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Steps to reproduce the behavior.
+      placeholder: |
+        1. Run `insight .`
+        2. Set flag `--output my_report`
+        3. See error...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: A clear and concise description of what you expected to happen.
+      placeholder: The CLI should parse the files and generate report/summary.md without errors.
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Terminal Output / Stack Trace
+      description: Please copy and paste the relevant terminal output or traceback here.
+      render: shell
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment Information
+      description: Operating System, Python version, Insight CLI version.
+      placeholder: "macOS 14.5 / Python 3.11.4 / insight-cli-sarang 0.2.1"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Confirmations
+      options:
+        - label: I have searched existing issues to ensure this is not a duplicate.
+          required: true
+        - label: I am not sharing sensitive data (e.g. raw API keys or proprietary credentials).
+          required: true

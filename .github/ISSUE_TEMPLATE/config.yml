@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: GitHub Discussions
+    url: https://github.com/ferrix-lab/Insight-Py/discussions
+    about: Ask questions, share ideas, and connect with other contributors.
+  - name: Security Vulnerability Reporting
+    url: https://github.com/ferrix-lab/Insight-Py/security
+    about: Privately report security vulnerabilities.
